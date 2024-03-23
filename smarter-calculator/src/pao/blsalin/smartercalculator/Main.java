@@ -1,8 +1,11 @@
 package pao.blsalin.smartercalculator;
 
+import pao.blsalin.smartercalculator.calculatorResult.AbstractCalculationResult;
 import pao.blsalin.smartercalculator.calculatorResult.CalculationResult;
+import pao.blsalin.smartercalculator.calculatorResult.PrintingCalculationResult;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,11 +21,10 @@ public class Main {
     }
 
     private static void runSmarterCalculator(String[] args) {
-        List<CalculationResult> calculationResults =  SmarterCalculator.calculate(args);
-
-        for (CalculationResult result : calculationResults) {
-            CalculationRequest request = result.getRequest();
-            System.out.println("Operation " + request + " has result " + result.computeResult());
-        }
+        SmarterCalculator
+                .calculate(args)
+                .stream()
+                .map(PrintingCalculationResult::new)
+                .forEach(PrintingCalculationResult::computeResult);
     }
 }

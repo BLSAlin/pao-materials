@@ -2,7 +2,7 @@ package pao.blsalin.smartercalculator.calculatorResult;
 
 import pao.blsalin.smartercalculator.CalculationRequest;
 
-public class DoubleCalculationResult extends CalculationResult {
+public class DoubleCalculationResult extends AbstractCalculationResult {
     public DoubleCalculationResult(CalculationRequest request) {
         super(request);
     }
